@@ -67,8 +67,10 @@ func (g *Generator) renderTemplates(path string, d fs.DirEntry, err error) error
 	}
 	defer f.Close()
 
+	content := strings.ReplaceAll(string(data), "{{projectpath}}", "/fullstackgo")
+
 	err = g.templates.ExecuteTemplate(f, "layout.html", PageData{
-		Body:        template.HTML(string(data)),
+		Body:        template.HTML(content),
 		ProjectPath: "/fullstackgo",
 	})
 	if err != nil {
