@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"html/template"
 	"io/fs"
 	"log"
@@ -26,12 +25,26 @@ func init() {
 }
 
 func main() {
-	err := filepath.WalkDir("content", func(path string, d fs.DirEntry, err error) error {
+	err := os.Mkdir("docs", 0755)
+	if errors.Is(err, os.ErrExist) {
+	} else if err != nil {
+		log.Fatal(err)
+	}
+
+	err = os.CopyFS("docs/static", os.DirFS("content/static"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = filepath.WalkDir("content", func(path string, d fs.DirEntry, err error) error {
 		if d.IsDir() {
 			return nil
 		}
 
-		fmt.Println(path, d.Name(), "directory?", d.IsDir())
+		if !strings.HasSuffix(path, ".html") {
+			log.Printf("Skipping %s", path)
+			return nil
+		}
 
 		data, err := os.ReadFile(path)
 		if err != nil {
@@ -41,7 +54,6 @@ func main() {
 		outputPath := strings.Replace(path, "content", "docs", 1)
 		err = os.MkdirAll(filepath.Dir(outputPath), 0755)
 		if errors.Is(err, os.ErrExist) {
-
 		} else if err != nil {
 			return err
 		}
