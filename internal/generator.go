@@ -69,7 +69,7 @@ func (g *Generator) renderTemplates(path string, d fs.DirEntry, err error) error
 
 	err = g.templates.ExecuteTemplate(f, "layout.html", PageData{
 		Body:        template.HTML(string(data)),
-		ProjectPath: "fullstackgo",
+		ProjectPath: "/fullstackgo",
 	})
 	if err != nil {
 		return err
