@@ -1,0 +1,23 @@
+nav {
+  padding: 0.5rem 1rem;
+  background-color: var(--bright);
+  color: var(--dark);
+  border-radius: 0 0 1rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0rem 2rem;
+  align-items: baseline;
+
+  h1 {
+    font-size: 2rem;
+    font-style: italic;
+  }
+  a {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  a:hover {
+    text-decoration: underline 4px var(--dark);
+  }
+}

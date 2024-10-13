@@ -4,10 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Full-Stack-Go</title>
-    <link rel="stylesheet" href="/fullstackgo/static/css/style.css" />
+    <title>Full Stack Go</title>
+    <link rel="stylesheet" href="{{.ProjectPath}}/static/css/main.css" />
+    <link rel="stylesheet" href="{{.ProjectPath}}/static/css/nav.css" />
   </head>
   <body>
-    {{ .Body }}
+    <main>
+      <nav>
+        <a href="{{.ProjectPath}}/" style="margin-right: auto">
+          <h1>Full Stack Go</h1>
+        </a>
+        <a href="{{.ProjectPath}}/blog">Der Blog</a>
+        <a href="{{.ProjectPath}}/book">Das Buch</a>
+      </nav>
+      {{ .Body }}
+    </main>
   </body>
 </html>
