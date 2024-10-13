@@ -8,11 +8,13 @@
   --dark: hsl(0 0% 5%);
   --mid: hsl(0 0% 15%);
   --mid-bright: hsl(0 0% 40%);
+  --mid-brighter: hsl(0 0% 80%);
   --bright: white;
 }
 body {
   padding: 0;
-  background-color: var(--dark);
+  background: radial-gradient(var(--dark), black);
+  /* background-color: var(--dark); */
   color: var(--bright);
   font-size: 18px;
 }
@@ -29,9 +31,10 @@ main {
 article {
   padding: 1rem;
   background-color: var(--mid);
-  border-radius: 1rem;
-  border: 1px solid var(--mid-bright);
   min-height: 100vh;
+  box-shadow: 10px -10px 0 var(--bright);
+  border-left: 1px solid var(--mid-bright);
+  border-radius: 0.2rem;
 
   h1 {
     margin-bottom: 1rem;
