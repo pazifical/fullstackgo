@@ -29,11 +29,17 @@ main {
   margin: auto;
 }
 
+strong,
+b,
+i {
+  font-size: inherit;
+}
+
 article {
   padding: 1rem;
   background-color: var(--bright);
-  box-shadow: 10px 10px 0 var(--dark);
   border-radius: 0.5rem;
+  box-shadow: 10px 10px 0 var(--dark), -10px -10px 0 rgb(255 255 255 / 0.5);
 
   h1 {
     margin-bottom: 1rem;
@@ -42,6 +48,9 @@ article {
   h2 {
     margin-bottom: 0.83rem;
     font-size: 1.25rem;
+  }
+  a {
+    text-decoration: underline 3px var(--blue);
   }
 }
 
@@ -53,8 +62,8 @@ p {
   font-size: 1.1rem;
   margin-bottom: 1rem;
   line-height: 1.75rem;
-  letter-spacing: 0.075rem;
-  text-align: justify;
+  letter-spacing: 0.05rem;
+  /* text-align: justify; */
 }
 
 ul {
@@ -83,6 +92,10 @@ button {
   cursor: pointer;
 }
 
+.shadow {
+  box-shadow: 10px 10px 0 var(--dark), -10px -10px 0 rgb(255 255 255 / 0.5);
+}
+
 .circle {
   background-color: var(--bright);
   padding: 1rem;
@@ -92,7 +105,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 10px 10px 0 var(--dark);
   border: none;
 }
 
@@ -110,6 +122,24 @@ button {
   display: grid;
   gap: 4rem;
   grid-template-columns: 1fr;
+}
+
+.quote {
+  font-size: 1rem;
+  margin: 0;
+  display: block;
+  font-weight: lighter;
+}
+
+.code {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 1rem;
+  overflow-x: scroll;
+  padding: 1rem;
+  margin: 0;
+  border: 2px solid var(--blue);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (min-width: 600px) {

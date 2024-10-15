@@ -19,41 +19,144 @@
           <a href="/fullstackgo/book">Das Buch</a>
         </nav>
         <article>
-  <h1>Aller Anfang ist schwer - oder etwa nicht?</h1>
+  <h1>Weil einfach einfach einfach ist</h1>
   <p>
     Je nachdem, welche Programmiersprache du bereits gelernt hast, ist dein
-    Empfinden von "Einfachheit" sicherlich vorgeprägt. Aber was ist im Kontext
-    von Software-Engineering überhaupt mit Einfachheit und Komplexität gemeint?
-    Und was hat das ganze überhaupt mit Go zu tun?
+    Empfinden von <b>Einfachheit</b> sicherlich vorgeprägt. Aber was ist im
+    Kontext von Software-Engineering überhaupt mit <b>Einfachheit</b> und
+    <b>Komplexität</b>
+    gemeint? Und was hat das ganze überhaupt mit <b>Go</b> zu tun?
   </p>
 
   <br />
   <h2>Einfachheit als Gegenstück zur Komplexität</h2>
   <p>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-    amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+    Im Englischen ist es einfacher: Es gibt das Wort <b>easy</b> und das Wort
+    <b>simple</b>. Im Deutschen verwenden wir irgendwie für beide Bedeutungen
+    das Wort <b>einfach</b>... <b>Happy</b> und <b>lucky</b> lassen grüßen...
+  </p>
+  <p>
+    Wir wollen das Wort <b>Einfachheit</b> im Kontext der Software-Entwicklung
+    also als Gegenstück zur <b>Komplexität</b> vertehen. Einfache
+    Programmiersprachen sind <b>leicht lesbar</b>. Einfache Programmiersprachen
+    haben <b>wenig Keywords</b>. Einfache Programmiersprachen
+    <b>können</b> einfach zu lernen sein. Das heißt aber nicht, dass sie auch
+    einfach zu meistern sind.
   </p>
 
   <br />
   <h2>Go: Simplicity by Design</h2>
   <p>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-    amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+    Die offizielle Webseite <a href="http://go.dev">go.dev</a> bewirbt
+    <b>Go</b> wie folgt:
+    <i>Build simple, secure, scalable systems with Go.</i>
+    Die <b>Einfachheit</b> (simple) ist also ein Kern-Feature der
+    Programmiersprache.
   </p>
+
+  <p>
+    <i>There should be one-- and preferably only one --obvious way to do it.</i
+    ><br />
+    Wem kommt diese Aufforderung bekannt vor? Genau! Sie stammt aus dem allseits
+    bekannten
+    <a href="https://peps.python.org/pep-0020/">Zen Of Python</a>. Wer auch nur
+    ein wenig mit der Programmiersprache <b>Python</b> gearbeitet hat, wird sich
+    aber stark wundern, wie viele Möglichkeiten es in Python gibt, das gleiche
+    zu tun. Schauen wir uns das ganze mal in einem <b>Beispiel</b> an:
+  </p>
+  <p>
+    <b>Aufgabe:</b> <br />Filtere eine Liste aus Tieren so, dass eine neue Liste
+    mit den Tieren, die mit "K" beginnen erzeugt wird.
+  </p>
+
+  <pre class="code">
+tiere = ["Kuh", "Katze", "Hund", "Pferd", "Krebs"]
+
+<b># Variante 1: Der altmodische Klassiker</b>
+tiere_mit_k = []
+for i in range(len(tiere)):
+    tier = tiere[i]
+    if tier.startswith("K"):
+        tiere_mit_k.append(tier)
+
+<b># Variante 2: Der modernere Ansatz</b>
+tiere_mit_k = []
+for tier in tiere:
+    if tier.startswith("K"):
+        tiere_mit_k.append(tier)
+
+<b># Variante 3: Der pythonische Ansatz </b> 
+tiere_mit_k = [tier for tier in tiere if tier.startswith("K")]
+
+<b># Variante 4: Der funktionale Ansatz </b> 
+tiere_mit_k = list(filter(lambda x: x.startswith("K"), tiere))
+</pre>
+  <p>
+    Leider sind das noch nicht mal alle Möglichkeiten, wie man diese Aufgabe mit
+    <b>Python </b> bewältigen kann... Auf den unerfahrenen Entwickler mag das
+    noch wie ein <b>Vorteil</b> wirken. Immerhin kann man es genau so machen,
+    wie man es gerade am liebsten mag. Aber sollte Quellcode wirklich diese
+    <i>persönliche Note</i> haben?
+  </p>
+  <p>
+    Es muss nicht mal ein anderer Entwickler sein, der sich an einem bestimmten
+    Stil stört. Möglicherweise findet der Entwickler, der den Code ursprünlich
+    geschrieben hat, zu einem anderen Zeitpunkt einen ganz anderen Stil viel
+    besser. Und plötzlich wird ein und das gleiche auf dutzend verschiedene
+    Weisen geschrieben.
+  </p>
+  <p>
+    <b>Python</b> ist jedoch nicht die einzige Programmiersprache, bei der das
+    so ist: <b>Java, JavaScript, C#, C++, Rust</b> und viele mehr fallen der
+    gleichen Komplexität zum Opfer. Wer die Wahl hat, hat die Qual. Die Qual hat
+    meistens die Person, die den Code dann verstehen muss.
+  </p>
+  <p>
+    Der Softwareentwickler Robert C. Martin (Uncle Bob) hat zwar diverse
+    umstrittene und zum Teil nicht mehr ganz zeitgemäße Aussagen getroffen, aber
+    eine Aussage steht weiter fest:
+    <b>Quellcode wird sehr viel häufiger gelesen als geschrieben. </b>
+  </p>
+
+  <p>
+    Aber wie löst man die Aufgabe denn dann mit <b>Go</b>? Es gibt nur eine
+    Variante:
+  </p>
+
+  <pre class="code">
+animals = []string{"Kuh", "Katze", "Hund", "Pferd", "Krebs"}
+
+animalsWithK = make([]string, 0)
+for _, animal := range animals {
+  animalsWithK = append(animalsWithK, animal)
+}
+</pre
+  >
+  <p>
+    Ich geb zu: Elegant sieht das ganze nicht aus. Schreibt man einen der obigen
+    <b>Python-Einzeiler</b>, fühlt man sich weitaus clever, nicht wahr?
+  </p>
+  <p>
+    Der große Vorteil bei <b>Go</b> ist jedoch, dass
+    <b>jeder Go-Entwickler</b> diesen Code so schreibt. Das ist ein weiterer
+    Grund dafür, dass praktisch jeder Go-Code gleich aussieht und man deshalb
+    sehr schnell und einfach fremden Code <b>lesen und verstehen</b> kann.
+  </p>
+
   <br />
   <h2>Fazit</h2>
   <p>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    Beim Design der Programmiersprache <b>Go</b> und seiner Standardbibliothek
+    wird penibel darauf geachtet, dass es tatsächlich nur eine Variante gibt,
+    eine bestimmte Logik in Quellcode abzubilden.
+  </p>
+  <p>
+    Nach anfänglichem Zweifel und liebäugeln mit
+    <i>eleganteren</i> Programmiersprachen wie Rust, bin ich inzwischen sehr
+    froh, den Go-Weg eingeschlagen zu haben. Mein Code von vor zwei Jahren liest
+    sich so, als hätte ich ihn gestern geschrieben. Weniger Komplexität in der
+    Programmiersprache bedeutet <b>weniger kognitive Last</b>, sodass man sich
+    stärker auf die Lösung des eigentlichen Problems konzentrieren kann.
   </p>
 </article>
 
