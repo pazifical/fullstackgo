@@ -122,6 +122,7 @@ button {
   display: grid;
   gap: 4rem;
   grid-template-columns: 1fr;
+  margin: 3rem 0;
 }
 
 .quote {

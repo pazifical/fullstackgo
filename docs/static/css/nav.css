@@ -5,7 +5,7 @@ nav {
 
   box-shadow: 10px 10px 0 var(--dark), 10px 0px 0 var(--dark),
     -10px -10px 0 rgb(255 255 255 / 0.5);
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   display: flex;
   flex-wrap: wrap;
   gap: 0rem 2rem;
