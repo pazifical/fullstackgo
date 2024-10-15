@@ -1,17 +1,15 @@
 nav {
   padding: 0.5rem 1rem;
-  background-color: var(--mid);
-  color: var(--bright);
+  background-color: var(--bright);
+  color: var(--dark);
 
-  box-shadow: 10px -10px 0 var(--bright);
-  border-left: 1px solid var(--mid-bright);
-  border-bottom: 1px solid var(--mid-bright);
+  box-shadow: 10px 10px 0 var(--dark), 10px 0px 0 var(--dark);
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0rem 2rem;
   align-items: baseline;
-  border-radius: 0.2rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 
   h1 {
     font-size: 2rem;

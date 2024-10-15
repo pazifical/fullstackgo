@@ -10,13 +10,14 @@
   --mid-bright: hsl(0 0% 40%);
   --mid-brighter: hsl(0 0% 80%);
   --bright: white;
+  --blue: rgb(90 218 255);
 }
 body {
   padding: 0;
-  background: radial-gradient(var(--dark), black);
-  /* background-color: var(--dark); */
-  color: var(--bright);
+  background-color: var(--blue);
+  color: var(--dark);
   font-size: 18px;
+  min-height: 100vh;
 }
 a {
   text-decoration: none;
@@ -30,11 +31,9 @@ main {
 
 article {
   padding: 1rem;
-  background-color: var(--mid);
-  min-height: 100vh;
-  box-shadow: 10px -10px 0 var(--bright);
-  border-left: 1px solid var(--mid-bright);
-  border-radius: 0.2rem;
+  background-color: var(--bright);
+  box-shadow: 10px 10px 0 var(--dark);
+  border-radius: 0.5rem;
 
   h1 {
     margin-bottom: 1rem;
@@ -78,4 +77,48 @@ li {
 .font-s {
   font-size: 1rem;
   margin-bottom: 0.167rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.circle {
+  background-color: var(--bright);
+  padding: 1rem;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 10px 0 var(--dark);
+  border: none;
+}
+
+.hero {
+  font-weight: bold;
+  font-style: italic;
+  color: var(--bright);
+  font-size: 3rem;
+  text-align: center;
+  text-shadow: 4px 0 0 var(--dark), -4px 0 0 var(--dark), 0 4px 0 var(--dark),
+    0 -4px 0 var(--dark);
+}
+
+.hero-area {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+}
+
+@media only screen and (min-width: 600px) {
+  .hero-area {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 2fr 1fr;
+  }
+  .hero {
+    text-align: left;
+  }
 }
