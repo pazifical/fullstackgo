@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Full Stack Go</title>
+    <link href="/fullstackgo/static/vendor/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/fullstackgo/static/css/main.css" />
+    <link rel="stylesheet" href="/fullstackgo/static/css/nav.css" />
+  </head>
+  <body>
+    <main>
+      <div style="margin: 0 1rem">
+        <nav>
+          <a href="/fullstackgo/" style="margin-right: auto">
+            <h1 style="text-decoration: underline 4px solid var(--blue)">
+              Full Stack Go
+            </h1>
+          </a>
+          <a href="/fullstackgo/blog">Der Blog</a>
+          <a href="/fullstackgo/book">Das Buch</a>
+        </nav>
+        <article class="line-numbers">
+  <h1>Hello World</h1>
+  <p>
+    Das erste Programm, welches man in einer Programmiersprache schreibt, ist
+    typischerweise das <b>Hello World</b>.
+  </p>
+  <p>
+    Bevor wir den Code schreiben, müssen wir jedoch noch kurz auf die
+    Kommandozeile, um in einem Ordner unserer Wahl ein <b>Go-Modul</b> zu
+    initiieren. Das kann beispielsweise im Terminal von
+    <b>VSCode</b> geschehen:<br />
+  </p>
+  <p>
+    <code><b>go mod init helloworld</b></code>
+  </p>
+
+  <p>
+    Dieser Befehl generiert eine <b>go.mod</b>-Datei im aktuellen Verzeichnis.
+    In dieser wird alles gespeichert, was für unser Projekt relevant ist
+    (Go-Versionsnummer, externe Abhängigkeiten, ...). Aber dazu später mehr. Für
+    <b>Go</b> ist nur wichtig, dass diese Datei existiert.
+  </p>
+  <p>
+    Erzeugen wir nun eine Datei mit dem Namen <b>main.go</b> und füllen sie mit
+    folgendem Inhalt:
+  </p>
+  <pre class="code">
+<code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hallo Welt!")
+}</code></pre>
+
+  <p>
+    Was die einzelnen Zeilen Code bedeuten, gehen wir gleich genauer drauf ein.
+    Zunächst können wir unser Hello-World-Programm mit dem folgenden Befehl
+    ausführen:
+  </p>
+
+  <p>
+    <code><b>go run .</b></code>
+  </p>
+
+  <p>
+    In der Kommandozeile erhalten wir unser freundliches "Hallo Welt!".
+    Fantastisch! Gehen wir aber nun auf die verschiedenen Teile des Programms
+    ein.
+  </p>
+
+  <br />
+  <pre class="code"><code class="language-go">package main</code></pre>
+  <p>
+    Ganz oben in jeder Quellcode-Datei wird das aktuelle <b>Paket</b>
+    (package) benannt. Go-Pakete - auch Module genannt - basieren auf Ordnern
+    und werden im besten Fall analog zum Ordnernamen benannt. Alle Dateien im
+    gleichen Ordner haben die
+    <b>gleiche erste Zeile</b>.
+  </p>
+
+  <br />
+  <pre
+    class="code"
+    data-start="3"
+  ><code class="language-go">import "fmt"</code></pre>
+  <p>
+    Nach dem Paketnamen folgen die ganzen Importe. Diese können aus eigenen
+    Paketen, aus externen Libraries oder, wie in unserem Code, aus der
+    Go-Standardbibliothek sein.
+  </p>
+  <p>
+    Das Go-Paket <b>fmt</b> beinhaltet verschiedene Funktionen, um Text zu
+    formatieren und ausgeben zu können. Weil wir in unserem Programm etwas
+    ausgeben wollen, müssen wir das Paket importieren.
+  </p>
+
+  <br />
+  <pre class="code" data-start="5"><code class="language-go">func main() {
+    fmt.Println("Hallo Welt!")
+}</code></pre>
+  <p>
+    In Zeile <b>5</b> definieren wir mit dem Keyword <b>func</b> eine Funktion
+    mit dem Namen <b>main</b>. Sie besitzt keine Übergabeparameter. Das liegt
+    unter anderem daran, dass die <b>main</b>-Funktion in <b>Go</b> eine
+    besondere Bedeutung hat. Führt man eine Go-Datei aus, ist in dieser Datei
+    die <b>main-Funktion</b> der Einstiegspunkt.
+  </p>
+  <p>
+    In Zeile <b>6</b> nutzen wir die Funktion <b>Println</b> aus dem Paket
+    <b>fmt</b>, um unser "Hallo Welt!" auf die Kommandozeile zu schreiben. Das
+    war's auch schon. Ganz anders als in <b>Java</b>, aber ähnlich wie in
+    <b>Python</b> wird nicht viel Klimm-Bimm benötigt, um ein lauffähiges
+    Programm zu erhalten.
+  </p>
+</article>
+
+      </div>
+      <script src="/fullstackgo/static/vendor/prism.js"></script>
+    </main>
+  </body>
+</html>

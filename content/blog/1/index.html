@@ -49,8 +49,9 @@
     mit den Tieren, die mit "K" beginnen erzeugt wird.
   </p>
 
-  <pre class="code">
-tiere = ["Kuh", "Katze", "Hund", "Pferd", "Krebs"]
+  <pre
+    class="code"
+  ><code class="language-python">tiere = ["Kuh", "Katze", "Hund", "Pferd", "Krebs"]
 
 <b># Variante 1: Der altmodische Klassiker</b>
 tiere_mit_k = []
@@ -69,7 +70,7 @@ for tier in tiere:
 tiere_mit_k = [tier for tier in tiere if tier.startswith("K")]
 
 <b># Variante 4: Der funktionale Ansatz </b> 
-tiere_mit_k = list(filter(lambda x: x.startswith("K"), tiere))
+tiere_mit_k = list(filter(lambda x: x.startswith("K"), tiere))</code>
 </pre>
   <p>
     Leider sind das noch nicht mal alle Möglichkeiten, wie man diese Aufgabe mit
@@ -103,15 +104,15 @@ tiere_mit_k = list(filter(lambda x: x.startswith("K"), tiere))
     Variante:
   </p>
 
-  <pre class="code">
-animals = []string{"Kuh", "Katze", "Hund", "Pferd", "Krebs"}
+  <pre
+    class="code"
+  ><code class="language-go">animals = []string{"Kuh", "Katze", "Hund", "Pferd", "Krebs"}
 
 animalsWithK = make([]string, 0)
 for _, animal := range animals {
   animalsWithK = append(animalsWithK, animal)
-}
-</pre
-  >
+}</code>
+</pre>
   <p>
     Ich geb zu: Elegant sieht das ganze nicht aus. Schreibt man einen der obigen
     <b>Python-Einzeiler</b>, fühlt man sich weitaus clever, nicht wahr?
