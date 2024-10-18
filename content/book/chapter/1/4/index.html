@@ -1,3 +1,72 @@
-<article>
-  <h1>TODO</h1>
+<article class="line-numbers">
+  <h1>Kontrollstrukturen</h1>
+  <p>
+    Da das Buch Programmierkenntnisse voraussetzt, können wir dieses Thema
+    ziemlich schnell abhandeln.
+  </p>
+
+  <h2>If-Else</h2>
+  <p>
+    If-Else ist ziemlich selbsterklärend und ähnlich wie in jeder
+    weitverbreiteten Programmiersprache. Auf Klammern in der Bedingung wird
+    verzichtet.
+  </p>
+  <pre class="code"><code class="language-go">randomNumber := 21
+
+if randomNumber < 0 {
+  fmt.Println("Deine Zahl ist negativ")
+} else if randomNumber > 0 {
+  fmt.Println("Deine Zahl ist positiv")
+} else {
+  fmt.Println("Deine Zahl ist 0")
+}</code></pre>
+  <br /><br />
+  <h2>Switch-Case</h2>
+  <p>
+    Ein ähnlich an den Haaren herbeigezogenens Beispiel gibts für Switch-Case:
+  </p>
+  <pre class="code"><code class="language-go">name := "Joe"
+
+switch name {
+case "Anna":
+  fmt.Println("Hallo Anna, schön dich wieder zu sehen!")
+case "Joe":
+  fmt.Println("Ach Joe, schön dich zu sehen!")
+default:
+  fmt.Println("Hallo Fremder!")
+}</code></pre>
+
+  <p>
+    Anders als in manch anderer modernen Programmiersprache ist das switch-case
+    in <b>Go</b> jedoch ziemlich langweilig.
+  </p>
+
+  <br /><br />
+
+  <h2>For-Schleifen</h2>
+  <p>TODO</p>
+
+  <pre class="code"><code class="language-go">names := []string{
+  "Karl",
+  "Anna",
+  "Joe",
+}
+
+for i, name := range names {
+  fmt.Printf("%d: %s\n", i, name)
+}
+// Output:
+// 0: Karl
+// 1: Anna
+// 2: Joe
+
+for _, name := range names {
+  fmt.Println(name)
+}
+// Output:
+// Karl
+// Anna
+// Joe</code></pre>
+
+  <p>TODO</p>
 </article>

@@ -1,3 +1,104 @@
-<article>
-  <h1>TODO</h1>
+<article class="line-numbers">
+  <h1>Einfache Datentypen</h1>
+  <p>
+    Jede Programmiersprache hat eigentlich die gleichen
+    <b>einfachen Datentypen</b>. Bei manchen muss man sie
+    <b>explizit</b> hinschreiben (C++, Java), bei manchen werden sie
+    <b>implizit</b> vom Interpreter oder Compiler detektiert (Python,
+    JavaScript, Go). Aber tiefer als das müssen wir in diesem Kapitel gar nicht
+    abtauchen.
+  </p>
+
+  <p>
+    Die einfachen Datentypen in Go sind
+    <b>Boolean, String, Integer, Float</b> und noch ein paar andere.
+  </p>
+
+  <br /><br />
+
+  <h2>Boolean: wahr oder falsch</h2>
+
+  <p>
+    Am ersten Datentyp sehen wir direkt die <b>zwei Möglichkeiten</b>, wie in
+    <b>Go</b> Variablen initialisiert werden können:
+  </p>
+
+  <pre class="code"><code class="language-go">// Variante 1:
+var weLoveCookies bool
+weLoveCookies = true
+
+// Variante 2:
+isWeatherGood := true
+isWeekend := false</code></pre>
+
+  <p>
+    <b>Variante 1</b> zeigt, wie zunächst die Variable
+    <b>weLoveCookies</b> deklariert wird. In <b>Go</b> wird der Variable dabei
+    <b>Standardwert</b> des einfachen Datentyps zugewiesen. Zu den
+    Standardwerten kommen wir am Ende des Unterkapitels.
+  </p>
+  <p>
+    <b>Variante 2</b> zeigt, wie die Variablen in Zeile <b>5</b> und <b>6</b>
+    <b>deklariert</b> und direkt mit Werten <b>initialisiert</b> werden.
+  </p>
+  <p>
+    Diese beiden Varianten gelten ebenfalls für alle weiteren einfachen
+    Datentypen.
+  </p>
+
+  <br /><br />
+
+  <h2>String: Text jeglicher Art</h2>
+  <p>
+    Text jeglicher Art wird in <b>Go</b> mit dem Datentyp
+    <b>string</b> ausgedrückt:
+  </p>
+  <pre class="code"><code class="language-go">var name string
+name = "Karl"</code></pre>
+
+  <br /><br />
+
+  <h2>Integer: Ganze Zahlen</h2>
+  <p>
+    Will man ganze Zahlen, egal ob positiv oder negativ ausdrücken, benötigt man
+    den Integer-Datentyp.
+  </p>
+  <pre class="code"><code class="language-go">var zahl int
+zahl = 1000</code></pre>
+  <p>
+    Außer <b>int</b> gibt es noch diverse andere "Spezial"-Varianten wie int8,
+    int32, int64, uint, uint8, uint32, uint64 und uintptr. Aber welcher soll den
+    jetzt benutzt werden? Das ist zum Glück <b>ganz einfach</b>: Gibt es keinen
+    besonderen Grund, eine "Spezial"-Variante zu nutzen, sollte stets einfach
+    <b>int</b> verwendet werden.
+  </p>
+
+  <br />
+  <br />
+  <h2>Float: Gleitkomma-Zahlen</h2>
+  <p>Natürlich kann man auch Gleitkommazahlen ausdrücken.</p>
+  <pre class="code"><code class="language-go">var pi float64
+pi = 3.1412</code></pre>
+  <p>
+    Außer <b>float64</b> gibt es noch <b>float32</b>, wobei heutzutage
+    eigentlich stets ersterer genutzt werden sollte.
+  </p>
+
+  <br /><br />
+
+  <h2>Standartwerte</h2>
+  <p>
+    In <b>Go</b> hat jeder einfache Datentyp einen Standardwert. Das verhindert
+    die in manchen Programmiersprachen üblichen Probleme, dass eine Variable,
+    auf die zugegriffen wird, obwohl sie nie initialisiert wurde. Das führt dann
+    entweder zu Programmabstürzen oder Zugriff auf Bereiche des
+    Arbeitsspeichers.
+  </p>
+  <p>Die Standardwerte sind eigentlich ziemlich nachvollziehbar:</p>
+  <ul>
+    <li>bool ➜ false</li>
+    <li>string ➜ "" (leerer String)</li>
+    <li>int ➜ 0</li>
+    <li>float64 ➜ 0.0</li>
+  </ul>
 </article>

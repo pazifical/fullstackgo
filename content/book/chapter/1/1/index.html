@@ -20,6 +20,8 @@
     (Go-Versionsnummer, externe Abhängigkeiten, ...). Aber dazu später mehr. Für
     <b>Go</b> ist nur wichtig, dass diese Datei existiert.
   </p>
+
+  <h2>Die ersten paar Zeilen Go</h2>
   <p>
     Erzeugen wir nun eine Datei mit dem Namen <b>main.go</b> und füllen sie mit
     folgendem Inhalt:
@@ -45,11 +47,12 @@ func main() {
 
   <p>
     In der Kommandozeile erhalten wir unser freundliches "Hallo Welt!".
-    Fantastisch! Gehen wir aber nun auf die verschiedenen Teile des Programms
-    ein.
+    Fantastisch!
   </p>
 
-  <br />
+  <h2>Was bedeutet das alles?</h2>
+  <p>Gehen wir aber nun auf die verschiedenen Teile des Programms ein.</p>
+
   <pre class="code"><code class="language-go">package main</code></pre>
   <p>
     Ganz oben in jeder Quellcode-Datei wird das aktuelle <b>Paket</b>
@@ -59,7 +62,6 @@ func main() {
     <b>gleiche erste Zeile</b>.
   </p>
 
-  <br />
   <pre
     class="code"
     data-start="3"
@@ -75,7 +77,6 @@ func main() {
     ausgeben wollen, müssen wir das Paket importieren.
   </p>
 
-  <br />
   <pre class="code" data-start="5"><code class="language-go">func main() {
     fmt.Println("Hallo Welt!")
 }</code></pre>
@@ -93,6 +94,7 @@ func main() {
     <b>Python</b> wird nicht viel Klimm-Bimm benötigt, um ein lauffähiges
     Programm zu erhalten.
   </p>
+  <h2>Quellcode gefällig?</h2>
   <p>
     Der <b>Quellcode</b> des einfachen Hello-World-Programms kann übrigens
     <a

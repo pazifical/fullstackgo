@@ -21,8 +21,42 @@
           <a href="/fullstackgo/blog">Der Blog</a>
           <a href="/fullstackgo/book">Das Buch</a>
         </nav>
-        <article>
-  <h1>TODO</h1>
+        <article class="line-numbers">
+  <h1>Funktionen</h1>
+  <p>
+    Funktionen sind in <b>Go</b> - wie vieles anderes - ebenfalls nicht sehr
+    besonders. Schauen wir uns ein paar Beispiele an.
+  </p>
+
+  <pre
+    class="code"
+  ><code class="language-go">func addNumbers(firstNumber int, secondNumber int) int {
+  return firstNumber + secondNumber
+}</code></pre>
+
+  <p>
+    Bei den <b>Übergabeparametern</b> folgt nach dem Variablennamen nocht der
+    Datentyp. Darauf folgt der Typ des <b>Rückgabewerts</b>.
+  </p>
+
+  <p>
+    Es ist möglich, <b>mehrere Rückgabewerte</b> zu haben. Den typischen
+    Use-Case dafür lernen wir in einem der folgenden Kapitel kennen. Hier
+    zunächst ein an den Haaren herbeigezogenes Beispiel:
+  </p>
+
+  <pre
+    class="code"
+  ><code class="language-go">func createCombinations(w1 string, w2 string) (string, string) {
+  return fmt.Sprintf("%s%s", w1, w2), fmt.Sprintf("%s%s", w2, w1)
+}
+
+func main() {
+  a, b := createCombinations("rilla", "go")
+  fmt.Println(a, b)
+  // Output:
+  // rillago gorilla
+}</code></pre>
 </article>
 
       </div>
