@@ -67,7 +67,7 @@ default:
   <br /><br />
 
   <h2>For-Schleifen</h2>
-  <p>TODO</p>
+  <p>In Go gibt es <b>nur eine</b> Variante, wie man Listen durchläuft:</p>
 
   <pre class="code"><code class="language-go">names := []string{
   "Karl",
@@ -76,12 +76,12 @@ default:
 }
 
 for i, name := range names {
-  fmt.Printf("%d: %s\n", i, name)
+  fmt.Println(i, name)
 }
 // Output:
-// 0: Karl
-// 1: Anna
-// 2: Joe
+// 0 Karl
+// 1 Anna
+// 2 Joe
 
 for _, name := range names {
   fmt.Println(name)
@@ -91,7 +91,58 @@ for _, name := range names {
 // Anna
 // Joe</code></pre>
 
-  <p>TODO</p>
+  <p>Das gleiche gilt auch für Key-Value-Paare:</p>
+
+  <pre class="code"><code class="language-go">var people = map[string]Person{
+  "cool_joe_1337": Person{Name: "Joe", age: 42},
+  "lizzy_twizzy": Person{Name: "Alice", age: 24} 
+}
+
+for username, person := range people {
+  fmt.Println(username, person)
+}</code></pre>
+
+  <p>
+    Der erste Wert des Wertepaars ist bei Listen also immer der Index, bei
+    Key-Value-Paaren der Schlüssel.
+  </p>
+  <p>
+    Und ja... das ist etwas komisch. Kaum jemand, der neu mit Go anfängt,
+    erwartet folgendes:
+  </p>
+
+  <pre class="code"><code class="language-go">names := []string{
+  "Karl",
+  "Anna",
+  "Joe",
+}
+for name := range names {
+  fmt.Println(name)
+}
+// 1
+// 2
+// 3</code></pre>
+
+  <p>
+    Und so ist Go nun eben mal auch <b>keine perfekte</b> Programmiersprache.
+    Das ist jedoch ein Fehler, den man höchstens in den ersten Wochen macht.
+    Spätestens, wenn man etwas mit dem Listenwert - also hier der Variable
+    <b>name</b> - machen möchte, erhält man Linter- oder Kompilier-Fehler. Was
+    ich damit meine? Folgender Code <b>kompiliert nicht mal</b>:
+  </p>
+
+  <pre class="code"><code class="language-go">var people = []Person{
+  Person{Name: "Joe", age: 42}, Person{Name: "Alice", age: 24},
+}
+
+for person := range people {
+  fmt.Println(person.Name)
+}
+</code></pre>
+  <p>
+    Das liegt daran, dass die Variable person in Zeile 6 ein Integer und keine
+    Person ist. Die Gefahr für Bugs ist in der Realität also eher klein.
+  </p>
 </article>
 
       </div>

@@ -1,0 +1,73 @@
+<article class="line-numbers">
+  <h1>Lesen und Schreiben von Dateien</h1>
+  <p>
+    Zum Abschluss des Kapitels schauen wir uns noch an, wie man Dateien liest
+    und schreibt. Dabei lernen wir noch ein paar ganz Hilfreiche Funktionen aus
+    der Standardbibliothek kennen.
+  </p>
+  <p>
+    Nehmen wir an, wir wollen eine CSV-Datei lesen und aus den einzelnen Zeilen
+    Personen-Objekte erstellen. Unser Personen-Struct sieht wie folgt aus:
+  </p>
+  <pre class="code"><code class="language-go">type Person struct {
+    Name string
+    Age int
+}</code></pre>
+  <p>Und unsere Text-Datei wie folgt:</p>
+  <pre class="code"><code class="language-bash">name;age
+alice;24
+bob;  42
+charly;-66
+dan
+13;eddy</code></pre>
+  <p>
+    Gruselig, oder? Obgleich eine Input-Datei selten so viele Fehler aufweist,
+    sind es alle welche, die auftreten können. Sobald wir mit Dateien arbeiten,
+    müssen wir davon ausgehen, dass sie fehlerhaft sein können.
+  </p>
+  <p>Dann fangen wir doch mal an, die Datei zu öffnen:</p>
+  <pre class="code"><code class="language-go">func main() {
+  f, err := os.Open("people.csv")
+  if err != nil {
+    fmt.Printf("ERROR: %v\n", err)
+    os.Exit(1)
+  }
+  defer f.Close()
+
+  people := make([]Person, 0)
+  scanner := bufio.NewScanner(f)
+  for scanner.Scan() {
+    line := scanner.Text()
+
+    parts := strings.Split(line, ";")
+    if len(parts) != 2 {
+      fmt.Printf("WARNING: line does not consist of exactly two parts: %s\n", line)
+      continue
+    }
+
+    name := strings.TrimSpace(parts[0])
+    if name == "" {
+      fmt.Printf("WARNING: name cannot be empty in line: %s\n", line)
+      continue
+    }
+
+    age, err := strconv.Atoi(strings.TrimSpace(parts[1]))
+    if err != nil {
+      fmt.Printf("WARNING: %v\n", err)
+      continue
+    }
+    if age < 0 {
+      fmt.Printf("WARNING: age cannot be negative in line: %s\n", line)
+      continue
+    }
+
+    people = append(people, Person{
+      Name: name,
+      Age:  age,
+    })
+  }
+
+  fmt.Println(people)
+}
+    </code></pre>
+</article>

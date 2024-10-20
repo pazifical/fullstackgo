@@ -21,8 +21,113 @@
           <a href="/fullstackgo/blog">Der Blog</a>
           <a href="/fullstackgo/book">Das Buch</a>
         </nav>
-        <article>
-  <h1>TODO</h1>
+        <article class="line-numbers">
+  <h1>Listen und Key-Value-Paare</h1>
+  <p>
+    Listen und Key-Value-Paare (Schlüssel-Wert-Paare) benötigt man nahezu in
+    jeder Programmiersprache. Das Konzept sollte also wohlbekannt sein.
+  </p>
+  <br />
+  <h2>Listen</h2>
+  <p>
+    In Go gibt es zwei Arten von Listen: <b>Arrays</b> und <b>Slices</b>.
+    Letzteres ist eine Abstraktionsstufe über dem Array mit fester Länge und
+    wird nahezu ausschließlich verwendet. Dass man mal ein Array instanziert ist
+    eher unwahrscheinlich.
+  </p>
+  <p>
+    Die Werte in einer Liste müssen <b>alle</b> den gleichen Datentyp haben, der
+    bereits bei der Erstellung vergeben wird.
+  </p>
+  <p>
+    Im folgenden sehen wir drei Beispiele, die jeweils den gleichen
+    <b>Slice</b> vom Typ <b>string</b> erzeugen:
+  </p>
+  <pre class="code"><code class="language-go">// Variante 1:
+var namesV1 := []string{
+  "Alice", "Bob", "Charly",
+}
+
+// Variante 2:
+var namesV2 := make([]string, 0)
+namesV2 = append(namesV2, "Alice")
+namesV2 = append(namesV2, "Bob")
+namesV2 = append(namesV2, "Charly")
+
+// Variante 3:
+var namesV3 := make([]string, 3)
+namesV3[0] = "Alice"
+namesV3[0] = "Bob"
+namesV3[0] = "Charly"</code></pre>
+
+  <p>
+    Je nachdem, auf welche Art wir den Slice füllen, macht die eine Variante
+    mehr Sinn als die anderen.
+  </p>
+  <p>
+    Aber was bedeutet eigentlich dieses <b>make</b> in Zeile 7 und 13?<br /><b
+      >make</b
+    >
+    initialisiert den Slice. In Variante 3 werden bei der Erzeugung bereits 3
+    Listen-Elemente erzeugt und mit dem Standardwert (hier: leerer String)
+    gefüllt. Die Länge der Liste ist also bereits nach der Instanzierung bereits
+    3. Das ganze schauen wir uns in einem weiteren Beispiel mal an.
+  </p>
+
+  <pre class="code"><code class="language-go">var numbersV2 := make([]int, 0)
+fmt.Println(len(numbersV2))
+// 0
+
+var numbersV3 := make([]int, 3)
+fmt.Println(len(numbersV3))
+// 3
+fmt.Println(numbersV3)
+// [0, 0, 0]</code></pre>
+
+  <p>
+    Ganz nebenbei haben wir hier die nützliche Funktion <b>len()</b> gelernt.
+    Sie gibt die Länge des Slices zurück.
+  </p>
+  <br /><br />
+  <h2>Key-Value-Paare</h2>
+  <p>
+    Bei der Benennung der Key-Value-Paar-Datenstruktur ist Go ziemlich
+    Mainstream: Sie heißt <b>map</b> und funktioniert ähnlich wie ein Java
+    HashMap, ein JavaScript Map oder ein Python Dictionary.
+  </p>
+  <p>
+    Der Datentyp beider Komponenten, also von Key und von Value, muss innerhalb
+    einer map <b>gleich</b> sein. Ähnlich wie bei den Listen, können zwei
+    Varianten bei der Initialisierung verwendet werden:
+  </p>
+
+  <pre class="code"><code class="language-go">var peopleV1 = map[string]Person{
+    "cool_joe_1337": Person{Name: "Joe", age: 42},
+    "lizzy_twizzy": Person{Name: "Alice", age: 24},
+}
+
+var peopleV2 := make(map[string]Person, 0)
+peopleV2["cool_joe_1337"] = Person{Name: "Joe", age: 42}  
+peopleV2["lizzy_twizzy"] = Person{Name: "Alice", age: 24}  
+
+joe := peopleV1["cool_joe_1337"]
+fmt.Println(joe.Name)
+// "Joe"</code></pre>
+
+  <p>
+    Will man wissen, ob ein Wert in einer <b>map</b> vorhanden ist, kann man den
+    <b>optionalen</b> zweiten Wert, verwenden:
+  </p>
+  <pre
+    class="code"
+  ><code class="language-go">person, ok := peopleV1["something_something"]
+fmt.Println(ok)
+// false</code></pre>
+
+  <p>Und interessiert tatsächlich nur das <b>ok</b>:</p>
+  <pre class="code"><code class="language-go">_, ok := peopleV1["cool_joe_1337"]
+fmt.Println(ok)
+// true</code></pre>
 </article>
 
       </div>

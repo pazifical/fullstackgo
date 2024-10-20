@@ -12,7 +12,8 @@
   </p>
   <pre class="code"><code class="language-go">type Person struct {
     Name string
-    alter int
+    age int
+    isSmoker bool
 }</code></pre>
   <br />
   <h2>Warum Name groß und Alter klein?</h2>
@@ -28,12 +29,25 @@
   <br />
   <br />
   <h2>Instanzieren von Strukturen</h2>
-  <p>TODO</p>
+  <p>
+    Für einfache Datenstrukturen, also welche, die eher eine Kombination von
+    Werten darstellen, ist die Standard-Instanzierung die beste Variante:
+  </p>
   <pre class="code"><code class="language-go">joe := Person{
     Name: "Joe",
     age: 42,
 }</code></pre>
-  <p>TODO</p>
+  <p>
+    Aber Moment mal... was ist mit dem Attribut <b>isSmoker</b>? Wird ein Wert
+    nicht gegeben, wird der <b>Standardwert</b> gesetzt.
+  </p>
+
+  <h2>Eine Art Konstruktor</h2>
+  <p>
+    Komplexere Objekte, die beispielsweise eine Validierung benötigen, erzeugt
+    man besser über eine Art Konstruktor-Funktion. Dabei ist es typisch, die
+    Funktion wie folgt mit einem "New"-Präfix zu versehen:
+  </p>
   <pre
     class="code"
   ><code class="language-go">func NewPerson(name string, age int) Person {
@@ -48,10 +62,38 @@ func main() {
 }
 </code></pre>
 
+  <p>
+    Stellen wir uns vor, wir wollen tatsächlich eine
+    <b>Validierung</b> vornehmen. Den vorherigen Code können wir beispielsweise
+    folgt anpassen:
+  </p>
+  <pre
+    class="code"
+  ><code class="language-go">func NewPerson(name string, age int) (Person, error) {
+    if age < 0 {
+        return Person{}, errors.New("Das Alter einer Person darf nicht negativ sein.")
+    }
+    return Person{
+        Name: name,
+        age: age,
+    }, nil
+}</code></pre>
+  <p>
+    In Zeile 1 haben wir den Rückgabewert um einen weiteren Rückgabewert,
+    nämlich einen <b>error</b>, ergänzt.
+  </p>
+  <p>
+    In Zeile 2 prüfen wir dann, ob das Alter negativ ist. Sollte das der Fall
+    sein, geben wir eine leere Instanz und einen error zurück. Mit
+    <b>errors.New</b> lässt sich ganz einfach ein neuer error erzeugen.
+  </p>
   <br />
   <br />
   <h2>Methoden</h2>
-  <p>TODO</p>
+  <p>
+    Methoden sind in <b>Go</b> eigentlich einfach Funktionen, die quasi an ein
+    Objekt <b>angehängt</b> werden. Die Syntax dafür ist in Zeile 6 dargestellt.
+  </p>
   <pre class="code"><code class="language-go">type Person struct {
     Name string
     alter int
@@ -64,5 +106,12 @@ func (p *Person) SayYourName() {
         p.age,
     )
 }</code></pre>
-  <p>TODO</p>
+  <p>
+    Würden wir das Sternchen vor Person (p *Person, Zeile 6) weglassen, würde
+    die Methode auf einer neuen Instanz (einer Kopie) ausgeführt werden. Im
+    Normalfall sollte jedoch das Sternchen - ein Pointer - verwendet werden.
+    Dieser
+    <b>referenziert</b> unser Objekt. In Kapitel 2 werden wir an einem Beispiel
+    sehen, warum das wichtig ist.
+  </p>
 </article>
