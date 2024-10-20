@@ -22,7 +22,7 @@
           <a href="/fullstackgo/book">Das Buch</a>
         </nav>
         <article class="line-numbers">
-  <h1>Funktionen</h1>
+  <h1>Funktionen und Fehlerbehandlung</h1>
   <p>
     Funktionen sind in <b>Go</b> - wie vieles anderes - ebenfalls nicht sehr
     besonders. Schauen wir uns ein paar Beispiele an.
@@ -35,14 +35,13 @@
 }</code></pre>
 
   <p>
-    Bei den <b>Übergabeparametern</b> folgt nach dem Variablennamen nocht der
+    Bei den <b>Übergabeparametern</b> folgt nach dem Variablennamen noch der
     Datentyp. Darauf folgt der Typ des <b>Rückgabewerts</b>.
   </p>
 
   <p>
-    Es ist möglich, <b>mehrere Rückgabewerte</b> zu haben. Den typischen
-    Use-Case dafür lernen wir in einem der folgenden Kapitel kennen. Hier
-    zunächst ein an den Haaren herbeigezogenes Beispiel:
+    Ähnlich wie in Python, ist es ist möglich, <b>mehrere Rückgabewerte</b> zu
+    haben. Schauen wir uns zunächst ein etwas albernes Beispiel an:
   </p>
 
   <pre
@@ -57,6 +56,107 @@ func main() {
   // Output:
   // rillago gorilla
 }</code></pre>
+
+  <br /><br />
+  <h2>Fehlerbehandlung in Go - Fehler als Werte?</h2>
+  <p>
+    Fehlerbehandlung? Geht es nicht gerade um Funktionen und deren
+    Rückgabewerte? Ganz genau. Dieser Kontext ist aber auch der beste, um
+    Fehlerbehandlung in <b>Go</b> zu lernen.
+  </p>
+  <p>
+    Bei der Einleitung zu den einfachen Datentypen haben wir ein paar außen vor
+    gelassen. Einer davon ist der <b>error</b>-Datentyp - eigentlich handelt es
+    sich dabei um ein Interface, aber dazu später mehr.
+  </p>
+  <p>
+    In <b>Go</b> gilt folgendes: <b>Fehler sind Werte</b> (errors are values).
+    Das klingt anfangs komisch, aber der der Nutzen wird sehr schnell klar.
+    Fehler können also <b>Rückgabewerte von Funktionen sein</b>. Im folgenden
+    Beispiel wollen wir den Inhalt einer Datei lesen:
+  </p>
+  <pre
+    class="code"
+  ><code class="language-go">data, err := os.ReadAll("beispiel.txt")</code></pre>
+
+  <p>
+    Die Funktion os.ReadAll ist Teil der Go-Standardbibliothek. Wir nutzen sie,
+    um den ganzen Dateiinhalt in die Variable <b>data</b> zu lesen. Aber
+    natürlich kann die Funktion fehlschlagen. Entweder die Datei existiert nicht
+    oder sie kann nicht geöffnet werden.
+  </p>
+  <p>
+    Der zweite Rückgabewert von <b>os.ReadAll</b> ist ein Fehler (error) und wir
+    müssen entscheiden, was wir in einem solchen Fall machen. In <b>Go</b> wird
+    dazu der Fehler mit dem Wert <b>nil</b> vergleicht. Dieser ist ähnlich wie
+    None in Python, Null in Java oder null in JavaScript:
+  </p>
+  <pre
+    class="code"
+  ><code class="language-go">data, err := os.ReadAll("beispiel.txt")
+if err != nil {
+  fmt.Println("Datei kann nicht geöffnet werden. Programmabbruch.")
+  os.Exit(1)
+}</code></pre>
+
+  <p>
+    Wir nutzen also ein <b>if err != nil</b>, um zu Prüfen, ob ein Fehler
+    aufgetreten ist. Ist ein Fehler aufgetreten, wird in dem Beispiel ein
+    informativer Output geschrieben und das Programm anschließend beendet.
+  </p>
+  <p>
+    Echter Go-Anwendungscode beinhaltet im Normallfall enorm viele
+    <b>if err != nil</b>, denn es gibt eine Vielzahl an Möglchkeiten, wie in
+    einem Programm Fehler auftreten können. Die üblichen Verdächtigen sind
+    Datenbank-Verbindungen, Lesen und Schreiben von Dateien oder
+    Netzwerk-Kommunikationen.
+  </p>
+  <br />
+  <br />
+  <h2>"Aber in Python geht das mit einem Ein-Zeiler!"</h2>
+  <p>
+    Je nachdem, auf welchem Level man sich als Entwickler befindet, wird einem
+    dieser Gedanke in den Kopf kommen. Beispielhafter Code wäre dafür:
+  </p>
+  <pre class="code"><code class="language-python"># Python-Beispiel:
+data = open("beispiel.txt").read()</code></pre>
+  <p>
+    Schön und gut. In <b>Python</b> ist das tatsächlich in einer Zeile möglich.
+    Aber was passiert, wenn die Datei nicht existiert oder nicht geöffnet werden
+    kann? Der Quellcode <b>täuscht vor</b>, dass keine Fehler passieren könnten.
+    Der korrekte Python-Code <b>muss</b> also so aussehen:
+  </p>
+  <pre
+    class="code"
+  ><code class="language-python"># Korrigiertes Python-Beispiel:
+try:
+  with open("beispiel.txt") as input:
+    data = input.read()
+except Exception as e:
+  print("Datei kann nicht geöffnet werden. Programmabbruch.")
+  sys.exit(1)</code></pre>
+
+  <p>
+    Das sind sogar mehr Zeilen, als in <b>Go</b> notwendig werden. Schreibt man
+    <b>Go-Code</b> wird man jedoch quasi
+    <b>dazu gezwungen, Fehler zu behandeln</b>. Und das ist gut so!
+  </p>
+
+  <p>
+    Viele <b>moderne Programmiersprachen</b> beinhalten Strategien, um solche
+    dummen Bugs erst gar nicht zu ermöglichen. Alte Programmiersprachen mit dem
+    try-catch- / try-except-Paradigma, ermöglichen so nicht nur unerwartete
+    Programmabstürze, sondern auch potentielles falsches Verhalten.
+  </p>
+  <br /><br />
+  <h2>Happy-Path-Coding: Der gute Pfad</h2>
+  <p>
+    Was sich in <b>Go</b> ebenfalls schön zeigt, ist, dass
+    <b>Sonderfälle im eingerückten Code</b> und der korrekte Programmablauf ganz
+    links stattfindet. Das vermeidet zum einen <b>tiefe Einrückungen</b> und
+    verringert, die <b>kognitive Last</b>, der der Entwickler ausgesetzt ist:
+    Das eingerückte kann sehr einfach ausgeblendet werden.
+  </p>
 </article>
 
       </div>

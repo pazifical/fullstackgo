@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Full Stack Go</title>
+    <link href="/fullstackgo/static/vendor/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/fullstackgo/static/css/main.css" />
+    <link rel="stylesheet" href="/fullstackgo/static/css/nav.css" />
+  </head>
+  <body>
+    <main>
+      <div style="margin: 0 1rem">
+        <nav>
+          <a href="/fullstackgo/" style="margin-right: auto">
+            <h1 style="text-decoration: underline 4px solid var(--blue)">
+              Full Stack Go
+            </h1>
+          </a>
+          <a href="/fullstackgo/blog">Der Blog</a>
+          <a href="/fullstackgo/book">Das Buch</a>
+        </nav>
+        <article class="line-numbers">
+  <h1>Klassen und Methoden</h1>
+  <p>
+    Die "Klassen" in <b>Go</b> sind weitaus leichtgewichtiger als beispielsweise
+    in Python, Java oder JavaScript. Deshalb werden sie auch nicht Klassen,
+    sondern <b>structs</b>, also (Daten-)Strukturen, genannt.
+  </p>
+  <p>
+    Es wird weder etwas von einem globalen Objekt standardmäßig geerbt, noch ist
+    Vererbung überhaupt möglich. Die Definition einer solchen Struktur ist ganz
+    einfach:
+  </p>
+  <pre class="code"><code class="language-go">type Person struct {
+    Name string
+    alter int
+}</code></pre>
+  <br />
+  <h2>Warum Name groß und Alter klein?</h2>
+  <p>
+    Ob in <b>Go</b> etwas <b>public</b> oder <b>private</b> ist, wird über die
+    Groß- und Kleinschreibung geregelt. Außerhalb des Pakets/Moduls, in welchem
+    diese Struktur definiert ist, kann lediglich direkt auf die public Variablen
+    zugegriffen werden. Das gleiche gilt übrigens auch für
+    <b>Funktionen und Methoden</b>. Dazu aber mehr im Kapitel über
+    <b>Pakete und Module</b>.
+  </p>
+
+  <br />
+  <br />
+  <h2>Instanzieren von Strukturen</h2>
+  <p>TODO</p>
+  <pre class="code"><code class="language-go">joe := Person{
+    Name: "Joe",
+    age: 42,
+}</code></pre>
+  <p>TODO</p>
+  <pre
+    class="code"
+  ><code class="language-go">func NewPerson(name string, age int) Person {
+    return Person{
+        Name: name,
+        age: age,
+    }
+}
+
+func main() {
+    person := NewPerson("Joe", 42)
+}
+</code></pre>
+
+  <br />
+  <br />
+  <h2>Methoden</h2>
+  <p>TODO</p>
+  <pre class="code"><code class="language-go">type Person struct {
+    Name string
+    alter int
+}
+
+func (p *Person) SayYourName() {
+    fmt.Printf(
+        "Hallo, mein Name ist %s und ich bin %d Jahre alt.", 
+        p.Name, 
+        p.age,
+    )
+}</code></pre>
+  <p>TODO</p>
+</article>
+
+      </div>
+      <script src="/fullstackgo/static/vendor/prism.js"></script>
+    </main>
+  </body>
+</html>
