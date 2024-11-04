@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Full Stack Go</title>
+    <link href="/fullstackgo/static/vendor/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/fullstackgo/static/css/main.css" />
+    <link rel="stylesheet" href="/fullstackgo/static/css/nav.css" />
+  </head>
+  <body>
+    <main>
+      <div style="margin: 0 1rem">
+        <nav>
+          <a href="/fullstackgo/" style="margin-right: auto">
+            <h1 style="text-decoration: underline 4px solid var(--blue)">
+              Full Stack Go
+            </h1>
+          </a>
+          <a href="/fullstackgo/blog">Der Blog</a>
+          <a href="/fullstackgo/book">Das Buch</a>
+        </nav>
+        <article class="line-numbers">
+  <h1>Einleitung - Was ist eine JSON-API?</h1>
+  <p>
+    Zuvor haben wir bereits gelernt, dass ein Backend u.a. dafür da ist, dem
+    Frontend <b>Daten bereitzustellen</b>. Das erfolgt häufig im
+    <b>JSON-Format</b>.
+  </p>
+  <p>
+    JSON ist eine Abkürzung für <b>J</b>ava<b>S</b>cript <b>O</b>bject
+    <b>N</b>otation. Also die Notation, die in JavaScript für Objekte genutzt
+    wird. So simpel. Ein kleines Beispiel:
+  </p>
+  <pre class="code"><code class="language-javascript">{
+  id: 123456,
+  name: "Karl",
+  age: 35,
+  is_admin: false
+}</code></pre>
+  <br />
+  <br />
+  <h2>JSON-APIs</h2>
+  <p>
+    Backends, die Daten für ein Frontend (oder einen anderen Backend-Service)
+    bereitstellen, besitzen häufig eine solche JSON-Schnittstelle. Diese nennt
+    man dann häufig JSON-API. Eine einfache Implementation eines solchen
+    <b>JSON-API-Backends</b> ist Thema dieses Kapitels.
+  </p>
+
+  <p>
+    Unter einem Bestimmten <b>Pfad</b>, kann ein anderer Service dann diese
+    Daten abrufen. Stellen wir uns vor, unser Backend-Service ist unter der
+    <b>IP</b> 192.168.123.100 auf <b>Port</b> 8080 erreichbar.
+  </p>
+  <p>
+    Unser HTTP-Endpoint, also eine Schnittstelle, die per HTTP erreichbar ist,
+    könnte dann beispielsweise unser obiges JSON-Objekt unter folgender URL
+    erreichbar machen:<br />
+    <b>http://192.168.123.100:8080/api/person?id=123456</b><br />
+    Hier wird mit dem Query-Parameter <b>id</b> der jeweilige Nutzer ausgewählt.
+  </p>
+  <p>
+    Häufig sieht man auch folgende Art des URL-Designs: <br />
+    <b> http://192.168.123.100:8080/api/person/123456 </b>
+  </p>
+
+  <br />
+  <br />
+
+  <h2>Methoden einer JSON-API</h2>
+  <p>
+    Das vorherige Beispiel zeigt eine typische Art, wie mit einem
+    HTTP-GET-Request an die Daten angefragt werden. Andere HTTP-Methoden wie
+    POST, PUT und DELETE.
+  </p>
+  <p>
+    Im Kontext einer <b>CRUD-Applikation</b> (Create=Erstellen, Read=Lesen,
+    Update=Updaten, Delete=Löschen) werden die einzelnen HTTP-Methoden häufig
+    genau dafür genutzt:
+  </p>
+
+  <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 1rem">
+    <p>Create: POST</p>
+    <p>Senden von JSON-Daten an den Server</p>
+
+    <p>Read: GET</p>
+    <p>Erhalten von JSON-Daten vom Server</p>
+
+    <p>Update: PUT</p>
+    <p>Updaten von Daten auf dem Server</p>
+
+    <p>Delete: DELETE</p>
+    <p>Löschen von Daten auf dem Server</p>
+  </div>
+</article>
+
+      </div>
+      <script src="/fullstackgo/static/vendor/prism.js"></script>
+    </main>
+  </body>
+</html>

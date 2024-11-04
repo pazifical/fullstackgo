@@ -1,0 +1,48 @@
+<article class="line-numbers">
+  <h1>Einleitung - Was ist ein Backend-Service?</h1>
+  <p>
+    Im Bereich der <b>Web-Anwendungen</b> ist das <b>Backend</b> der Teil der
+    Anwendung, der auf einem <b>Server</b> läuft. Dagegen wird das
+    <b>Frontend</b>, also die Webseite an sich, im <b>Web-Browser</b> - also
+    lokal auf dem Rechner - ausgeführt. Für letzteres wird, je nachdem, wie
+    interaktiv es sein muss, HTML, CSS und JavaScript eingesetzt.
+  </p>
+  <p>
+    Typische Backend-Programmiersprachen sind Java, Python, Ruby, PHP oder aber
+    <b>Go</b>. Dabei wurde allein <b>Go</b> so designed, dass quasi alles, was
+    ein Backend können muss, schon in der Go-Standardbibliothek vorhanden ist.
+  </p>
+
+  <br>
+  <br>
+  <h2>Die Aufgaben des Backends</h2>
+  <p>
+    Die Aufgaben eines Backend-Services sind vielfältig. Gegebenenfalls sind es
+    sogar mehrere Backend-Services (Stichwort Micro-Service-Architektur), die
+    miteinander interagieren.
+  </p>
+  <p>
+    Typische Aufgaben sind dabei unter anderem folgende:
+    <ul>
+        <li>Daten für das Frontend bereitstellen (HTML oder JSON)</li>
+        <li>Dateiuploads entgegennehmen</li>
+        <li>Authentifizierung und Authorisierung</li>
+        <li>Interaktion mit der Datenbank</li>
+        <li>ETL-Prozesse</li>
+    </ul>
+  </p>
+
+  <br>
+  <br>
+
+  <h2>Interaktion mit der Datenbank?</h2>
+  <p>
+    Aber warum kann das <b>Frontend</b> nicht direkt mit der Datenbank kommunizieren? Die Frage kam mir jedenfalls am Anfang meiner Karriere. Die Antwort ist, sobald man drauf kommt, offensichtlich. Um mit der Datenbank kommunizieren zu können, benötigt man die Datenbank-Credentials (Username, Passwort). 
+  </p>
+  <p>
+    Überspitzt formuliert heißt das, dass <b>jeder</b>, der die Webseite benutzt, <b>alles</b> mit der Datenbank machen könnte, was er nur möchte.
+  </p>
+  <p>
+    Wir benötigen also zwingendermaßen eine <b>Schicht zwischen dem Nutzer und der Datenbank.</b> 
+  </p>
+</article>
